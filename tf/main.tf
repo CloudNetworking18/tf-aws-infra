@@ -1,5 +1,5 @@
 
-provider "aws" { 
+provider "aws" {
   region  = var.aws_region
   profile = var.aws_profile
 }
@@ -165,8 +165,8 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "app_bucket_encryp
 
 data "aws_iam_policy_document" "ec2_assume_role_doc" {
   statement {
-    effect    = "Allow"
-    actions   = ["sts:AssumeRole"]
+    effect  = "Allow"
+    actions = ["sts:AssumeRole"]
     principals {
       type        = "Service"
       identifiers = [var.ec2_service_principal]
@@ -183,7 +183,7 @@ resource "aws_iam_role_policy" "s3_access" {
   name = var.ec2_role_policy_name
   role = aws_iam_role.ec2_s3_role.id
   policy = jsonencode({
-    Version   = "2012-10-17",
+    Version = "2012-10-17",
     Statement = [
       {
         Effect = "Allow",
