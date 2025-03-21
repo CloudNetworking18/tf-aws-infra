@@ -6,7 +6,7 @@ variable "aws_profile" {
   default = "default"
 }
 
-variable "vpc_cidr" {
+variab   le "vpc_cidr" {
   default = "10.0.0.0/16"
 }
 
