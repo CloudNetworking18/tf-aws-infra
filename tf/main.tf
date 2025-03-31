@@ -711,7 +711,7 @@ resource "aws_cloudwatch_metric_alarm" "db_query_duration_alarm" {
   namespace           = "MyApp/Database"
   period              = 60
   statistic           = "Average"
-  threshold           = 200  # milliseconds (adjust as needed)
+  threshold           = 200 # milliseconds (adjust as needed)
   alarm_description   = "Alarm when average database query duration exceeds 200ms in 1 minute"
   dimensions = {
     InstanceId = aws_instance.app_server.id
@@ -727,7 +727,7 @@ resource "aws_cloudwatch_metric_alarm" "s3_call_duration_alarm" {
   namespace           = "MyApp/S3"
   period              = 60
   statistic           = "Average"
-  threshold           = 300  # milliseconds (adjust as needed)
+  threshold           = 300 # milliseconds (adjust as needed)
   alarm_description   = "Alarm when average S3 call duration exceeds 300ms in 1 minute"
   dimensions = {
     InstanceId = aws_instance.app_server.id
