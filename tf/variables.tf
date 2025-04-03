@@ -249,10 +249,14 @@ variable "domain_name" {
 
 variable "custom_domain" {
   description = "The custom domain used for email/SES (e.g. dev.cloud18.biz)"
-  default     = "dev.cloud18.biz"
+  default     = "demo.cloud18.biz"
 }
 
 variable "dev_zone_id" {
+  description = "The ID of the Route53 hosted zone for the dev subdomain"
+  type        = string
+}
+variable "demo_zone_id" {
   description = "The ID of the Route53 hosted zone for the dev subdomain"
   type        = string
 }
