@@ -616,31 +616,18 @@ resource "aws_cloudwatch_metric_alarm" "cpu_low_alarm" {
 #   zone_id = var.primary_zone_id
 # }
 
-data "aws_route53_zone" "dev" {
-  zone_id = var.dev_zone_id
-}
-
-# data "aws_route53_zone" "demo" {
-#   zone_id = var.demo_zone_id
+# data "aws_route53_zone" "dev" {
+#   zone_id = var.dev_zone_id
 # }
 
-# Create an alias record for the dev subdomain (dev.cloud18.biz)
-resource "aws_route53_record" "dev_alias" {
-  zone_id = data.aws_route53_zone.dev.zone_id
-  name    = "" # Apex record for the dev zone (e.g., dev.cloud18.biz)
-  type    = "A"
-
-  alias {
-    name                   = aws_lb.app_lb.dns_name
-    zone_id                = aws_lb.app_lb.zone_id
-    evaluate_target_health = true
-  }
+data "aws_route53_zone" "demo" {
+  zone_id = var.demo_zone_id
 }
 
-# # Create an alias record for the demo subdomain (demo.cloud18.biz)
-# resource "aws_route53_record" "demo_alias" {
-#   zone_id = data.aws_route53_zone.demo.zone_id
-#   name    = ""  # Apex record for the demo zone (e.g., demo.cloud18.biz)
+# # Create an alias record for the dev subdomain (dev.cloud18.biz)
+# resource "aws_route53_record" "dev_alias" {
+#   zone_id = data.aws_route53_zone.dev.zone_id
+#   name    = "" # Apex record for the dev zone (e.g., dev.cloud18.biz)
 #   type    = "A"
 
 #   alias {
@@ -649,3 +636,16 @@ resource "aws_route53_record" "dev_alias" {
 #     evaluate_target_health = true
 #   }
 # }
+
+# Create an alias record for the demo subdomain (demo.cloud18.biz)
+resource "aws_route53_record" "demo_alias" {
+  zone_id = data.aws_route53_zone.demo.zone_id
+  name    = ""  # Apex record for the demo zone (e.g., demo.cloud18.biz)
+  type    = "A"
+
+  alias {
+    name                   = aws_lb.app_lb.dns_name
+    zone_id                = aws_lb.app_lb.zone_id
+    evaluate_target_health = true
+  }
+}
