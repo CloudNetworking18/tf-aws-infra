@@ -640,7 +640,7 @@ data "aws_route53_zone" "demo" {
 # Create an alias record for the demo subdomain (demo.cloud18.biz)
 resource "aws_route53_record" "demo_alias" {
   zone_id = data.aws_route53_zone.demo.zone_id
-  name    = ""  # Apex record for the demo zone (e.g., demo.cloud18.biz)
+  name    = "" # Apex record for the demo zone (e.g., demo.cloud18.biz)
   type    = "A"
 
   alias {
